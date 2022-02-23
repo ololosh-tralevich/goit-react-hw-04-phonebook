@@ -1,0 +1,24 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: min-content; 
+  /* width: 60vw; */
+  margin-top: 30px;
+}
+
+.contactContainer {
+  padding: 10px 15px 25px 15px;
+  margin-bottom: 30px;
+  border-radius: 3px;
+  box-shadow: 0px 0px 16px 7px rgba(34, 60, 80, 0.27);
+}
+
+.listContainer {
+  min-width: 200px;
+  padding: 18px;
+  border-radius: 3px;
+  box-shadow: 0px 0px 16px 7px rgba(34, 60, 80, 0.27);
+}

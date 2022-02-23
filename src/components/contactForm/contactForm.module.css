@@ -1,0 +1,15 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 3px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.addContactBtn {
+  font-size: 17px;
+}

@@ -1,0 +1,19 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.listItem {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+
+.removeContactBtn {
+font-size: 14px;
+}
+
+.listDash {
+    margin: 0 6px;
+}
