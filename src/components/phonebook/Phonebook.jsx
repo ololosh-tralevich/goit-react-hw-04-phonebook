@@ -22,7 +22,7 @@ function Phonebook() {
     firstRender.current = false;
     localStorage.setItem('contacts', JSON.stringify(contacts));
     return;
-  },[contacts]);
+  }, [contacts]);
 
   const filterContacts = ev => {
     setFilter(ev.target.value);
