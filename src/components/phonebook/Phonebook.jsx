@@ -14,6 +14,7 @@ function Phonebook() {
   const firstRender = useRef(true);
 
   useEffect(() => {
+    console.log('Use Effect')
     const localContacts = JSON.parse(localStorage.getItem('contacts'));
     if (firstRender.current && localContacts) {
       setContacts(localContacts);
@@ -21,7 +22,7 @@ function Phonebook() {
     firstRender.current = false;
     localStorage.setItem('contacts', JSON.stringify(contacts));
     return;
-  });
+  },[contacts]);
 
   const filterContacts = ev => {
     setFilter(ev.target.value);
