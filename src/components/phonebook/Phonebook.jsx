@@ -14,7 +14,6 @@ function Phonebook() {
   const firstRender = useRef(true);
 
   useEffect(() => {
-    console.log('Use Effect')
     const localContacts = JSON.parse(localStorage.getItem('contacts'));
     if (firstRender.current && localContacts) {
       setContacts(localContacts);
