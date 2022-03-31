@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const Filter = ({ filterContacts, filter }) => {
+const Filter = ({ filteringContacts, filter }) => {
   return (
     <>
       <h4>Find contacts by name</h4>
@@ -11,7 +11,7 @@ const Filter = ({ filterContacts, filter }) => {
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
-        onChange={filterContacts}
+        onChange={filteringContacts}
       />
     </>
   );
@@ -24,6 +24,6 @@ Filter.defaultProps = {
 };
 
 Filter.propTypes = {
-  filterContacts: PropTypes.func.isRequired,
+  filteringContacts: PropTypes.func.isRequired,
   filter: PropTypes.string,
 };

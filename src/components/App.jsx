@@ -24,7 +24,7 @@ export const App = () => {
     firstRender.current = false;
   }, [contacts]);
 
-  const filterContacts = ev => {
+  const filteringContacts = ev => {
     setFilter(ev.target.value);
   };
 
@@ -34,11 +34,12 @@ export const App = () => {
       clone => clone.name === name || clone.number === number
     );
 
-    clone
-      ? alert(`${name} is already in your contacts`)
-      : setContacts(prevState => {
-          return [...prevState, { id: nanoid(), name: name, number: number }];
-        });
+    if (clone) {
+      return alert(`${name} is already in your contacts`);
+    }
+    setContacts(prevState => {
+      return [...prevState, { id: nanoid(), name: name, number: number }];
+    });
   };
 
   const deleteContactBtn = id => {
@@ -46,6 +47,13 @@ export const App = () => {
       return [...prevState.filter(contact => contact.id !== id)];
     });
   };
+
+  const filteredContacts = ()=> {
+    const filteredContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter)
+    );
+    return filteredContacts;
+  }
 
   return (
     <div className={styles.mainContainer}>
@@ -55,11 +63,10 @@ export const App = () => {
 
       <div className={styles.listContainer}>
         <h2>Contacts</h2>
-        <Filter filterContacts={filterContacts} filter={filter} />
+        <Filter filteringContacts={filteringContacts} filter={filter} />
         <ContactList
           deleteContactBtn={deleteContactBtn}
-          contacts={contacts}
-          filter={filter}
+          filteredContacts={filteredContacts()}
         />
       </div>
     </div>
