@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import PropTypes from 'prop-types';
 
 const Filter = ({ filteringContacts, filter }) => {
@@ -17,7 +19,7 @@ const Filter = ({ filteringContacts, filter }) => {
   );
 };
 
-export default Filter;
+export default memo(Filter);
 
 Filter.defaultProps = {
   filter: '',

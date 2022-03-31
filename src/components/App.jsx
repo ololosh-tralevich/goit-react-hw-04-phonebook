@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { nanoid } from 'nanoid';
 
 import ContactForm from './contactForm/ContactForm';
@@ -24,36 +24,38 @@ export const App = () => {
     firstRender.current = false;
   }, [contacts]);
 
-  const filteringContacts = ev => {
+  const filteringContacts = useCallback(ev => {
     setFilter(ev.target.value);
-  };
+  }, []);
 
-  const addContactBtn = contactData => {
-    const { name, number } = contactData;
-    const clone = contacts.find(
-      clone => clone.name === name || clone.number === number
-    );
+  const addContactBtn = useCallback(
+    contactData => {
+      const { name, number } = contactData;
+      const clone = contacts.find(
+        clone => clone.name === name || clone.number === number
+      );
 
-    if (clone) {
-      return alert(`${name} is already in your contacts`);
-    }
-    setContacts(prevState => {
-      return [...prevState, { id: nanoid(), name: name, number: number }];
-    });
-  };
-
+      if (clone) {
+        return alert(`${name} is already in your contacts`);
+      }
+      setContacts(prevState => {
+        return [...prevState, { id: nanoid(), name: name, number: number }];
+      });
+    },
+    [contacts]
+  );
   const deleteContactBtn = id => {
     setContacts(prevState => {
       return [...prevState.filter(contact => contact.id !== id)];
     });
   };
 
-  const filteredContacts = ()=> {
+  const filteredContacts = () => {
     const filteredContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter)
     );
     return filteredContacts;
-  }
+  };
 
   return (
     <div className={styles.mainContainer}>
